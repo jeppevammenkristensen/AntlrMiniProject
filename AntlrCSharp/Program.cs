@@ -4,10 +4,18 @@ using AntlrCSharp;
 using AntlrCSharp.Transformers;
 using Spectre.Console;
 
-var result =
-    ParseAndGetResult("create record Name with property Id:int FirstName:string LastName:string Angry:bool DOB:DateTime");
-AnsiConsole.MarkupLine(result ?? string.Empty);
+while (true)
+{
+    var item = AnsiConsole.Ask<string>("[green]Enter:[/]");
 
+
+    var result =
+        ParseAndGetResult(item);
+    AnsiConsole.MarkupLine(result ?? string.Empty);
+
+    if (result is {})
+        TextCopy.ClipboardService.SetText(result);
+}
 
 static string? ParseAndGetResult(string input)
 {

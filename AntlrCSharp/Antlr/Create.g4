@@ -6,7 +6,7 @@ declaration: propertydeclaration ;
 propertydeclaration: PROPERTY  identifiernamedeclaration+ ;
 declarationlist: declaration ( ',' declaration )* ; 
 identifiernamedeclaration: IDENTIFIER ':' identifiertype ;
-identifiertype : IDENTIFIER ;
+identifiertype : IDENTIFIER'?'? ;
 createType : class| interface | record;
 class: 'class';
 interface: 'interface';
@@ -18,7 +18,7 @@ DIGIT : [0-9] ;
 fragment UNDERSCORE : '_';
 fragment IDENTIFIERFIRST : (UPPERCASE|LOWERCASE|UNDERSCORE) ;
 fragment IDENTIFIERNOTFIRST : (IDENTIFIERFIRST|DIGIT) ;
-
+ 
 PROPERTY: 'property' ;
 
 IDENTIFIER : (IDENTIFIERFIRST) (IDENTIFIERNOTFIRST)*  ; 
